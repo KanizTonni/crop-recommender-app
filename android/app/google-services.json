@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588673892299",
+    "project_id": "crop-recommendation-fa84e",
+    "storage_bucket": "crop-recommendation-fa84e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588673892299:android:91f4fb5a85c3accd0f004e",
+        "android_client_info": {
+          "package_name": "com.croprecommender"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588673892299-4o4qk5cthkknu7t5pdgru1la8vh5suvf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdbceYtjeKYbfk379A9CS_cSCF97hRTSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588673892299-4o4qk5cthkknu7t5pdgru1la8vh5suvf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
