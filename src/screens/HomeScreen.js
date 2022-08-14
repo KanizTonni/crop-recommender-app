@@ -61,6 +61,7 @@ function HomeScreen({navigation}){
             </TouchableOpacity>
 
             <TouchableOpacity
+              onPress={() => navigation.navigate('AdvanceMethod')}
               style={{
                 backgroundColor: color.grad_green_1,
                 width: '100%',

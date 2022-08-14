@@ -49,7 +49,7 @@ export default function CropListItem(props) {
                         justifyContent: 'flex-start'
                     }}>
                         <Text style={{fontSize: normalization(16), fontWeight: 'bold',}}>Save</Text>
-                        <Text onPress={() => navigation.navigate('CropDetails', item.name)} style={{fontSize: normalization(16), fontWeight: 'bold', marginHorizontal: normalization(20)}}>Details</Text>
+                        <Text onPress={() => navigation.navigate('CropDetails', item)} style={{fontSize: normalization(16), fontWeight: 'bold', marginHorizontal: normalization(20)}}>Details</Text>
                 </View>
         </View>
     </View>

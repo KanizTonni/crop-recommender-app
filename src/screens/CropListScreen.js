@@ -146,7 +146,7 @@ export default function CropListScreen({route, navigation}) {
   useEffect(() => {
     getCrops()
   }, []);
-console.log(crops)
+  
   const renderItem = ({ item }) => (
     <CropListItem item={item} navigation={navigation} />
   );

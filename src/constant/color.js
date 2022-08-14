@@ -4,7 +4,8 @@ const color = {
   background: '#ffffff',
   text_white: '#ffffff',
   text_green: '#239B56',
-  error_red: 'red'
+  error_red: 'red',
+  background_white: '#fff',
 };
 
 export default color;
