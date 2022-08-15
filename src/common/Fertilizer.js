@@ -5,7 +5,6 @@ import normalization from '../constant/normalize'
 
 export default function Fertilizer(props) {
   const {fertilizerDetail} = props
-  console.log(fertilizerDetail)
 
   const [fertilizerNameArr, setFertilizerNameArr] = useState([])
   const [loading, setLoading] = useState(true)

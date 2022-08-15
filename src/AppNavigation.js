@@ -5,6 +5,7 @@ import BasicMethodScreen from './screens/BasicMethodScreen';
 import CropDetailsScreen from './screens/CropDetailsScreen';
 import CropListScreen from './screens/CropListScreen';
 import HomeScreen from './screens/HomeScreen';
+import SecondScreen from './screens/SecondScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 
 const Stack = createNativeStackNavigator();
@@ -21,6 +22,7 @@ function AppNavigation() {
         <Stack.Screen name="AdvanceMethod" component={AdvanceMethodScreen} />
         <Stack.Screen name="CropList" component={CropListScreen} />
         <Stack.Screen name="CropDetails" component={CropDetailsScreen} />
+        <Stack.Screen name="Seconds" component={SecondScreen} />
       </Stack.Navigator>
   );
 }

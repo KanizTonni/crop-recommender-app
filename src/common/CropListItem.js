@@ -24,6 +24,7 @@ export default function CropListItem(props) {
 
             elevation: 11,}}>
         <View
+            onPress={() => navigation.navigate('CropDetails', item)} 
             style={{
                 flex: 1,
             }}>
@@ -39,7 +40,7 @@ export default function CropListItem(props) {
             style={{
                 flex: 2,
             }}>
-                <Text style={{fontSize: normalization(18), fontWeight: 'bold', color: color.text_green, marginBottom: normalization(10)}}>{item.name}</Text>
+                <Text onPress={() => navigation.navigate('CropDetails', item)}  style={{fontSize: normalization(18), fontWeight: 'bold', color: color.text_green, marginBottom: normalization(10)}}>{item.name}</Text>
                 <Text style={{fontSize: normalization(14)}}>Season: {item.season}</Text>
                 <Text style={{fontSize: normalization(14),marginBottom: normalization(10)}}>Soil type: {item.soil}</Text>
                 <View
@@ -48,8 +49,7 @@ export default function CropListItem(props) {
                         marginBottom: normalization(10),
                         justifyContent: 'flex-start'
                     }}>
-                        <Text style={{fontSize: normalization(16), fontWeight: 'bold',}}>Save</Text>
-                        <Text onPress={() => navigation.navigate('CropDetails', item)} style={{fontSize: normalization(16), fontWeight: 'bold', marginHorizontal: normalization(20)}}>Details</Text>
+                        <Text onPress={() => navigation.navigate('CropDetails', item)} style={{fontSize: normalization(16), fontWeight: 'bold',}}>Details</Text>
                 </View>
         </View>
     </View>

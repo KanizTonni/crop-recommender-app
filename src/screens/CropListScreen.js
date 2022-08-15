@@ -9,14 +9,14 @@ import normalization from '../constant/normalize';
 export default function CropListScreen({route, navigation}) {
 
   const data = route.params
-  const value = data.values
-  const {duration, season, soil} = value;
+  const {cluster, soilType} = route.params ?? ''
+  const {duration, season, soil} = data.values ?? ''
 
   const [crops, setCrops] = useState([])
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("There is no match for your search!")
   
-  
+  console.log(route.params.soilType)
   useEffect(
     React.useCallback(() => {
       const onBackPress = () => {
@@ -33,7 +33,6 @@ export default function CropListScreen({route, navigation}) {
 
   const getCrops = async() => {
     await setLoading(true)
-    console.log(duration)
     if(duration !== '' && season === '' && soil === ''){
       await 
       firestore()
@@ -143,8 +142,27 @@ export default function CropListScreen({route, navigation}) {
     }
   }
 
+  const getClusterCrops = async() => {
+    await setLoading(true)
+    await 
+    firestore()
+    .collection('CropList')
+    .where('cluster', 'array-contains', cluster)
+    .get()
+    .then(snapshot => {
+      let allcrops = [];
+      snapshot.forEach((doc) => {
+        allcrops.push({ ...doc.data() });
+      });
+      setCrops(allcrops)
+      setLoading(false)
+    });
+
+  }
+
   useEffect(() => {
-    getCrops()
+      getCrops()
+
   }, []);
   
   const renderItem = ({ item }) => (
@@ -154,31 +172,26 @@ export default function CropListScreen({route, navigation}) {
   return (
     <View style={{flex: 1, backgroundColor: '#F9F9F9'}}>
       <View 
-          style={{
-            flex: 0.1, 
-            flexDirection: 'row',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            marginTop: normalization(20),
-            paddingHorizontal: normalization(20)
-          }}>
-            <View>
-            <Entypo name="leaf" size={normalization(40)} color={color.grad_green_1} />
-            <Text style={{fontSize: normalization(30)}}>Crop Recommender</Text>
-            </View>
-          
-          <Entypo name="menu" size={normalization(30)} color={color.grad_green_1} />
-              
-        </View>
+            style={{
+              flex: 0.1, 
+              flexDirection: 'row',
+              alignItems: 'flex-end',
+              marginTop: normalization(20),
+              paddingHorizontal: normalization(20)
+            }}>
+              <Entypo name="leaf" size={normalization(40)} color={color.grad_green_1} />
+              <Text style={{fontSize: normalization(30)}}>Crop Recommender</Text>
+            
+          </View>
       {
         loading ? <ActivityIndicator style={{marginTop: normalization(30)}} size="large" />
         :
           crops.length > 0 ? 
           <>
           <View style={{ marginTop: normalization(30),paddingHorizontal: normalization(20)}}>
-            <Text style={{fontSize: normalization(15)}}>
+            {/* <Text style={{fontSize: normalization(15)}}>
               Showing results for {duration === "short" ? "Short term," : duration === "long" ? "Long term," : ""} {season ? season : ""}{season ? "," : ""} {soil ? soil : ""}{soil ? "," : ""}
-            </Text>
+            </Text> */}
           </View>
 
           <FlatList
