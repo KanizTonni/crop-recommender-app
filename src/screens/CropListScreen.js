@@ -141,24 +141,7 @@ export default function CropListScreen({route, navigation}) {
       setLoading(false)
     }
   }
-
-  const getClusterCrops = async() => {
-    await setLoading(true)
-    await 
-    firestore()
-    .collection('CropList')
-    .where('cluster', 'array-contains', cluster)
-    .get()
-    .then(snapshot => {
-      let allcrops = [];
-      snapshot.forEach((doc) => {
-        allcrops.push({ ...doc.data() });
-      });
-      setCrops(allcrops)
-      setLoading(false)
-    });
-
-  }
+  console.log(crops)
 
   useEffect(() => {
       getCrops()
@@ -189,9 +172,9 @@ export default function CropListScreen({route, navigation}) {
           crops.length > 0 ? 
           <>
           <View style={{ marginTop: normalization(30),paddingHorizontal: normalization(20)}}>
-            {/* <Text style={{fontSize: normalization(15)}}>
+            <Text style={{fontSize: normalization(15)}}>
               Showing results for {duration === "short" ? "Short term," : duration === "long" ? "Long term," : ""} {season ? season : ""}{season ? "," : ""} {soil ? soil : ""}{soil ? "," : ""}
-            </Text> */}
+            </Text>
           </View>
 
           <FlatList

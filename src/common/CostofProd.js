@@ -44,6 +44,7 @@ export default function CostofProd(props) {
         shadowRadius: 6.68,
         elevation: 11,
       }}>
+        
     <View style={{flexDirection: 'row', marginTop: normalization(10), borderBottomWidth: 1}}>
       <View style={{flex: 1, alignItems: 'center',}}>
         <Text style={{ fontWeight: 'bold'}}>Production ingredient</Text>

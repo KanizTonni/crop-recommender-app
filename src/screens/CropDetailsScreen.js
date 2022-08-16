@@ -1,6 +1,6 @@
 import firestore from '@react-native-firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, Image, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, BackHandler, Image, ScrollView, Text, TouchableOpacity, View } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import CostofProd from '../common/CostofProd.js';
 import Fertilizer from '../common/Fertilizer';
@@ -34,11 +34,25 @@ export default function CropDetailsScreen({route, navigation}) {
     fontSize: 16,
   };
 
+  useEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        navigation.navigate("CropList", {values: item})
+        return true;
+      };
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+    }, []),
+  );
+
   const getCropDetail = async () => {
     await 
     firestore()
     .collection('CropDetails')
-    .where('name', '==', item.name)
+    .where('name', 'array-contains', item.name)
     .get()
     .then(snapshot => {
       let allcrops = [];
@@ -114,6 +128,7 @@ export default function CropDetailsScreen({route, navigation}) {
         {
           loading ? <ActivityIndicator style={{marginTop: normalization(30)}} size="large" />
           : <View style={{ flex: 0.9, marginTop: normalization(30),paddingHorizontal: normalization(20)}}>
+            <ScrollView>
             <View style={{flexDirection: 'row'}}>
               <Image 
                 style={{
@@ -127,15 +142,19 @@ export default function CropDetailsScreen({route, navigation}) {
                 <Text style={{fontSize: normalization(20), fontWeight: 'bold'}}>{item.name}</Text>
                 <Text style={{fontSize: normalization(15)}}>Soil type: {item.soil}</Text>
                 <Text style={{fontSize: normalization(15)}}>Season: {seasonNames}</Text>
-                <Text style={{fontSize: normalization(15)}}>Time to grow: 90-160 days</Text>
               </View>
             </View>
+
+            
 
             <View>
               <View style={tabs}>
                 <TabHead page="Cost of Production" title="Cost of Production" />
                 <TabHead page="Fertilizer" title="Fertilizer" />
               </View> 
+              <View style={{marginTop: normalization(10)}}>
+                <Text style={{fontSize: normalization(16)}}>Cost of productions and fertilizer amounts are measured per hector area.</Text>
+              </View>
 
               <View>
                   {
@@ -146,6 +165,7 @@ export default function CropDetailsScreen({route, navigation}) {
               </View>
 
             </View>
+            </ScrollView>
           </View>
         }
     </View>

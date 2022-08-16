@@ -74,7 +74,7 @@ export default function BasicMethodScreen({navigation}) {
           </View>
 
           <View style={{flex: 0.9, marginTop: normalization(20),paddingHorizontal: normalization(20)}}>
-            <Text style={{fontSize: normalization(18), marginBottom: normalization(20)}}>{constants.text}</Text>
+            <Text style={{fontSize: normalization(18), marginBottom: normalization(20)}}>{constants.text3}</Text>
             <DropDownPicker
                 open={open1}
                 value={value1}

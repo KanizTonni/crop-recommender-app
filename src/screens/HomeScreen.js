@@ -41,6 +41,12 @@ function HomeScreen({navigation}){
 
           <View style={{flex: 0.9, marginTop: normalization(20),paddingHorizontal: normalization(20)}}>
             <Text style={{fontSize: normalization(18)}}>{constants.text}</Text>
+            <Text style={{fontSize: normalization(18)}}>
+              <Entypo name="dot-single" size={normalization(30)} color={color.grad_green_1} />{constants.text1}
+            </Text>
+            <Text style={{fontSize: normalization(18)}}>
+              <Entypo name="dot-single" size={normalization(30)} color={color.grad_green_1} />{constants.text2}
+            </Text>
 
             <TouchableOpacity
               onPress={() => navigation.navigate('BasicMethod')}
